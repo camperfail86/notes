@@ -1,0 +1,44 @@
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    border-radius: 20px;
+    padding: 12px;
+    width: 600px;
+    height: 400px;
+}
+
+.header_newNote {
+    display: flex;
+    justify-content: space-between;
+}
+
+.name_note {
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.text_note {
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.textarea_text {
+    margin-bottom: 10px;
+    resize: none;
+}
+
+.input_text {
+    margin-bottom: 10px;
+}
+
+.title {
+    margin-bottom: 10px;
+}
