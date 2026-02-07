@@ -11,6 +11,11 @@ type EditNoteProps = {
 const EditNote = ({note, toggleUpdate, saveUpdate}: EditNoteProps) => {
     const [title, setTitle] = useState(note.title);
     const [content, setContent] = useState(note.content);
+    let disabled = false
+
+    if (!title &&!content ) {
+        disabled = true;
+    }
 
     return (
         <div className={styles.wrapper}>
@@ -20,10 +25,10 @@ const EditNote = ({note, toggleUpdate, saveUpdate}: EditNoteProps) => {
                     <button onClick={()=>toggleUpdate(false)} className={styles.close_button}>Х</button>
                 </div>
                 <div className={styles.name_note}>Название заметки</div>
-                <input value={title} onChange={(e) => setTitle(e.target.value)} className={styles.input_text} type="text"/>
+                <input maxLength={40} value={title} onChange={(e) => setTitle(e.target.value)} className={styles.input_text} type="text"/>
                 <div className={styles.text_note}>Текст заметки</div>
                 <textarea value={content} onChange={(e) => setContent(e.target.value)} cols={20} rows={15} className={styles.textarea_text} name="" id=""></textarea>
-                <button onClick={() => saveUpdate(note.id, title, content)}>Сохранить заметку</button>
+                <button disabled={disabled} onClick={() => saveUpdate(note.id, title, content)}>Сохранить заметку</button>
             </div>
         </div>
     );

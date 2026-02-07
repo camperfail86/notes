@@ -1,6 +1,11 @@
 .header {
+    width: 1086px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-direction: row;
+}
+
+.button {
+    cursor: pointer;
 }

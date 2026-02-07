@@ -11,7 +11,7 @@ function App() {
     const [editingId, setEditingId] = useState<string | null>(null);
     const [notes, setNotes] = useState<NoteElement[]>(() => {
         const defaultNotes: NoteElement[] = [
-            { id: "1", title: "Первая", content: "...", update: new Date() },
+            { id: "1", title: "Первая заметка", content: "Привет, это твоя первая заметка :)", update: new Date() },
         ];
 
         return JSON.parse(

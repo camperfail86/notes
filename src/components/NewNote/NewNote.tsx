@@ -10,6 +10,7 @@ type NewNoteProps = {
 const NewNote = ({addNote, toggle}: NewNoteProps) => {
     const [content, setContent] = useState<string>("");
     const [title, setTitle] = useState<string>("");
+    let disabled = false;
 
     function createNewNote(note: NoteElement){
         note.update = new Date();
@@ -20,6 +21,10 @@ const NewNote = ({addNote, toggle}: NewNoteProps) => {
         addNote(notes);
     }
 
+    if (!title || !content) {
+        disabled = true;
+    }
+
     return (
         <div className={styles.wrapper}>
             <div className={styles.container}>
@@ -28,10 +33,10 @@ const NewNote = ({addNote, toggle}: NewNoteProps) => {
                     <button onClick={()=> toggle()} className={styles.close_button}>Х</button>
                 </div>
                 <div className={styles.name_note}>Название заметки</div>
-                <input onChange={(e) => setTitle(e.target.value)} className={styles.input_text} type="text"/>
+                <input maxLength={40} onChange={(e) => setTitle(e.target.value)} className={styles.input_text} type="text"/>
                 <div className={styles.text_note}>Текст заметки</div>
                 <textarea onChange={(e) => setContent(e.target.value)} cols={20} rows={15} className={styles.textarea_text} name="" id=""></textarea>
-                <button onClick={()=>createNewNote({ id: crypto.randomUUID(), title: title, content: content })}>Создать заметку</button>
+                <button disabled={disabled} onClick={()=>createNewNote({ id: crypto.randomUUID(), title: title, content: content })}>Создать заметку</button>
             </div>
         </div>
     );
